@@ -40,6 +40,51 @@ function expect(target) {
 // ????????
 // ????????
 
+function Dog(properties) {
+  if (properties) {
+    this.color = properties.color;
+    if (properties.hasOwnProperty('hungry')) {
+      this.hungry = properties.hungry;  
+    } else {
+      this.hungry = true
+    }
+    
+    this.status = properties.status;
+  } else {
+    this.hungry = true
+  }
+
+  console.log(this)
+}
+
+Dog.prototype = {
+   
+} 
+
+
+
+
+
+function Human(props) {
+  if (props) {
+    if (props.hasOwnProperty('cool')) {
+      this.cool = props.cool;
+    } else {
+      this.cool = false
+    }
+  } else {
+    this.cool = false 
+  }
+}
+
+Human.prototype = {
+  pet:function(dog){
+    dog.status = 'happy'
+  },
+  feed:function(dog){
+    dog.hungry = false
+  }
+}
 
 //        __
 //   ____/ /___  ____ ______
@@ -50,7 +95,8 @@ function expect(target) {
 
 var sadie = new Dog({
   color: "black",
-  hungry: false
+  hungry: false,
+  status: "normal"
 });
 
 var moonshine = new Dog({
